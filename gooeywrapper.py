@@ -65,7 +65,7 @@ class GooeyWrapper:
         """
         return self.app_mode
 
-    def add_argument(parent, *args: list, **kwargs: dict):
+    def add_argument(self, parent, *args: list, **kwargs: dict):
         """
         Add an argument to the argument parser based on the execution mode.
 
