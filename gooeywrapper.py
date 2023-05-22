@@ -48,7 +48,7 @@ class GooeyWrapper:
         # Setup parsers based on the execution mode
         if self.app_mode in [GooeyMode.GUI_CLI, GooeyMode.CLI]:
             self.argument_parser = argparse.ArgumentParser
-            self.main_func(wrapper=self)
+            self.main_func(self)
         else:
             from gooey import Gooey, GooeyParser
             self.argument_parser = GooeyParser
@@ -77,6 +77,9 @@ class GooeyWrapper:
         if self.app_mode != GooeyMode.GUI:
             kwargs.pop('widget', None)
             kwargs.pop('gooey_options', None)
+            if 'action' in kwargs:
+                # Remove metavar when action is supplied as it can break argparse
+                kwargs.pop('metavar', None)
 
         # Add the argument to the parser
         parent.add_argument(*args, **kwargs)
