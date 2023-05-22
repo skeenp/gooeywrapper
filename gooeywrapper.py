@@ -79,4 +79,4 @@ class GooeyWrapper:
             kwargs.pop('gooey_options', None)
 
         # Add the argument to the parser
-        self.parser.add_argument(*args, **kwargs)
+        parent.add_argument(*args, **kwargs)
