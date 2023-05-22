@@ -47,11 +47,11 @@ class GooeyWrapper:
         """
         # Setup parsers based on the execution mode
         if self.app_mode in [GooeyMode.GUI_CLI, GooeyMode.CLI]:
-            self.argument_parser = argparse.ArgumentParser()
+            self.argument_parser = argparse.ArgumentParser
             self.main_func(wrapper=self)
         else:
             from gooey import Gooey, GooeyParser
-            self.argument_parser = GooeyParser()
+            self.argument_parser = GooeyParser
             Gooey(self.main_func, **gooey_args)(self)
 
     @property
