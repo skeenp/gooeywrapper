@@ -31,9 +31,12 @@ def main(wrapper: GooeyWrapper):
         description='My Application',
         epilog='This is the end of the application.'
     )
+    # Using the wrapper, add an arguement
     wrapper.add_argument(parser, 'input', help='Input file path')
-    wrapper.add_argument(parser, 'output', help='Output file path')
-    wrapper.add_argument(parser, '--verbose', help='Enable verbose mode', action='store_true')
+    # The add argument function can also be used to add an argument to a subparser or group
+    subparser = parser.add_subparsers(help='sub-commands help')
+    wrapper.add_argument(subparser, 'output', help='Output file path')
+    wrapper.add_argument(subparser, '--verbose', help='Enable verbose mode', action='store_true')
 
     args = parser.parse_args()
 
