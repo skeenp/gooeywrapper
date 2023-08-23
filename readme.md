@@ -7,6 +7,7 @@ The `gooeywrapper` library is a Python wrapper that simplifies the management of
 - **Execution Mode Detection:** The `gooeywrapper` automatically detects the execution mode based on command-line arguments. It supports three modes: GUI, CLI, and GUI+CLI.
 - **Argument Parsing:** The library seamlessly integrates with the argparse module to handle argument parsing in both CLI and GUI modes. It allows you to define command-line arguments and their respective options in a unified manner.
 - **Gooey Integration:** In GUI and GUI+CLI modes, the library uses the Gooey library to generate a graphical user interface for the application. It provides a wide range of GUI widgets and options to enhance the user experience.
+- **Arguement Passthrough NEW Aug 2023:** Now supports argument passthrough using the 'use_cmd_args':True gooey option when calling the run method of gooeywrapper. To pass through arguments, you must specify the '--gui' flag to force the GUI to be shown followed by the flags referencing items for which you want to passthrough to the GUI. This allows values on the form to be prepopulated via the cmd line or calling mechanism (i.e. bat file, shortcut, etc).
 
 ## Installation
 
