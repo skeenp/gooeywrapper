@@ -23,6 +23,7 @@ class GooeyWrapper:
     """
     
     argument_parser = None  
+    passthrough = False
     
     def __init__(self, main_func: callable):
         self.app_mode = GooeyMode.CLI
@@ -34,6 +35,10 @@ class GooeyWrapper:
             self.app_mode = GooeyMode.GUI_CLI
         elif len(sys.argv) == 1:
             self.app_mode = GooeyMode.GUI
+        elif '--gui' in sys.argv:
+            self.app_mode = GooeyMode.GUI
+            sys.argv.remove('--gui')
+            self.passthrough = True
         else:
             self.app_mode = GooeyMode.CLI
 
@@ -45,6 +50,9 @@ class GooeyWrapper:
             gooey_args (dict): Additional arguments for Gooey (applicable only in GUI mode).
 
         """
+        # Update arguements
+        if self.passthrough:
+            gooey_args['use_cmd_args'] = True
         # Setup parsers based on the execution mode
         if self.app_mode in [GooeyMode.GUI_CLI, GooeyMode.CLI]:
             self.argument_parser = argparse.ArgumentParser
